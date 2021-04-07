@@ -1,25 +1,24 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-dark" role="status">
-  <span class="visually-hidden">Loading...</span>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Search</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Enter a car name">
 </div>
-<table class="table">
-  <thead>
-    <tr >
-      <th>Car Name</th>
-      <th>Brand Name</th>
-      <th>Color Name</th>
-      <th>Daily Price</th>
-      <th>Description</th>
-      <th>Model Year</th>
-      <th>Car Id</th>
-    </tr>
-  </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{ car.carName }}</td>
-    <td>{{ car.brandName }}</td>
-    <td>{{ car.colorName }}</td>
-    <td>{{ car.dailyPrice }}</td>
-    <td>{{ car.description }}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.id }}</td>  
-  </tr>
-</table>
+<div class="row">
+  <div *ngFor="let car of cars" class="card" style="width: 20rem; padding: 10px; margin:10px;">
+  <img  src="https://localhost:44347/{{car.imagePath}}" class="card-img-top" alt="" width="300" height="200">
+  <div class="card-body">
+    <h5 class="card-title">{{car.brandName}}</h5>
+    <p class="card-text">{{car.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Color: {{car.colorName}} </li>
+    <li class="list-group-item">Model: {{car.modelYear}}</li>
+    <li class="list-group-item">Daily Price: {{car.dailyPrice | currency: "TRY":"":"3.2-2"}} TL</li>
+  </ul>
+  <div class="card-body">
+    <div class="d-grid gap-2 col-8 mx-auto">
+      <button routerLink="/cars/detail/{{car.id}}" (click)="carDetail" type="button" class="btn btn-outline-dark">Details</button>
+    </div>
+  </div>
+</div>
+</div>
+<br>

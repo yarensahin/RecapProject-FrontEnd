@@ -4,8 +4,10 @@
   </div>
 </div>
 <ul *ngIf="dataLoaded == true" class="list-group">
-  <li class="list-group-item active" aria-current="true">Brands</li>
-  <li *ngFor="let brand of brands" class="list-group-item">
+  <li [class]="getAllBrandClass()" routerLink="/cars">All Cars</li>
+  <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandId}}"
+    *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">
     {{ brand.brandName }}
   </li>
 </ul>
+
