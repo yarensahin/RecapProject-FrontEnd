@@ -15,6 +15,8 @@ export class CarComponent implements OnInit {
   carImages: CarImage[];
   dataLoaded=false;
   filterText=""
+  car:Car;
+  currentCar:Car;
   constructor(private carService:CarService,private activatedRoute:ActivatedRoute, private carDetailService:CardetailService) {}
 
   ngOnInit(): void {
@@ -55,4 +57,15 @@ export class CarComponent implements OnInit {
       this.dataLoaded=true;
     });
   }
+
+  getCarByCarId(carId:number){
+    this.carService.getCarByCarId(carId).subscribe(response=>{
+      this.cars=response.data
+      this.dataLoaded=true;
+    })
+  }
+  setCurrentCar(car:Car){
+    this.currentCar=car;
+  }
+
 }

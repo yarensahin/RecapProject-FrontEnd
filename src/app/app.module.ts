@@ -11,10 +11,12 @@ import { ColorComponent } from './components/color/color.component';
 import { CarComponent } from './components/car/car.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
-import { CardetailComponent } from './components/car/carDetail/cardetail/cardetail.component';
 import { CarPipePipe } from './pipes/car-pipe.pipe';
 import { BrandPipePipe } from './pipes/brand-pipe.pipe';
 import { ColorPipePipe } from './pipes/color-pipe.pipe';
+import { OnecardetailComponent } from './components/onecardetail/onecardetail.component';
+
+import { ToastrModule } from "ngx-toastr"
 
 @NgModule({
   declarations: [
@@ -25,16 +27,19 @@ import { ColorPipePipe } from './pipes/color-pipe.pipe';
     CarComponent,
     CustomerComponent,
     RentalComponent,
-    CardetailComponent,
     CarPipePipe,
     BrandPipePipe,
     ColorPipePipe,
+    OnecardetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

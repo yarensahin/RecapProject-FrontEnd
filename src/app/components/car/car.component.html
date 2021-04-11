@@ -2,6 +2,9 @@
   <label for="filterText" class="form-label">Search</label>
   <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Enter a car name">
 </div>
+<div *ngIf="filterText" class="alert alert-success">
+  {{filterText}} aradınız.
+</div>
 <div class="row">
   <div *ngFor="let car of cars" class="card" style="width: 20rem; padding: 10px; margin:10px;">
   <img  src="https://localhost:44347/{{car.imagePath}}" class="card-img-top" alt="" width="300" height="200">
@@ -16,7 +19,7 @@
   </ul>
   <div class="card-body">
     <div class="d-grid gap-2 col-8 mx-auto">
-      <button routerLink="/cars/detail/{{car.id}}" (click)="carDetail" type="button" class="btn btn-outline-dark">Details</button>
+      <button   (click)="setCurrentCar(car)" routerLink="/cars/details/{{car.id}}" class="btn btn-outline-dark" type="button">Details</button>
     </div>
   </div>
 </div>
